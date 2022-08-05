@@ -19,21 +19,6 @@ for (const file of commandFiles) {
 	const command = require(filePath);
 	client.commands.set(command.data.name, command);
 }
-client.on('interactionCreate', async interaction => {
-	if (!interaction.isChatInputCommand()) return;
-
-	const command = client.commands.get(interaction.commandName);
-
-	if (!command) return;
-
-	try {
-		await command.execute(interaction);
-	}
-	catch (error) {
-		console.error(error);
-		await interaction.reply({ content: '錯誤! 錯誤!', ephemeral: true });
-	}
-});
 
 // 事件處理
 client.event = new Collection();
@@ -56,10 +41,10 @@ client.on('interactionCreate', async interaction => {
 	const channel = client.channels.cache.get('1004786991021441084');
 	const Embed = new EmbedBuilder()
 		.setColor('Yellow')
-		.setAuthor({ name: '來自𝐖𝐚𝐥𝐚的系統訊息' })
+		.setAuthor({ name: '機器人問題回報通知' })
 		.addFields({ name: '問題回報內容', value: `回報用戶:${interaction.user}\n頻道:${interaction.fields.getTextInputValue('channel0Input')}\n描述:${interaction.fields.getTextInputValue('problemInput')}` })
 		.setTimestamp()
-		.setFooter({ text: '問題回報通知' });
+		.setFooter({ text: '來自𝐖𝐚𝐥𝐚的系統訊息' });
 	channel.send({ embeds: [Embed] });
 	if (interaction.customId === 'problemReport') {
 		await interaction.reply({ content: '已收到您提交的回覆', ephemeral: true });

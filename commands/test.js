@@ -10,9 +10,6 @@ module.exports = {
 			.setCustomId('problemReport')
 			.setTitle('機器人問題回報表單');
 
-		// Add components to modal
-
-		// Create the text input components
 		const channel0Input = new TextInputBuilder()
 			.setCustomId('channel0Input')
 			.setLabel('問題發生頻道(如果無，則留空即可)')
