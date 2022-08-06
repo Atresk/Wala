@@ -2,6 +2,6 @@ const { ContextMenuCommandBuilder, ApplicationCommandType } = require('discord.j
 
 module.exports = {
 	data: new ContextMenuCommandBuilder()
-		.setName('yee')
+		.setName('Bug回報')
 		.setType(ApplicationCommandType.User),
 };

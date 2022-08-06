@@ -2,12 +2,10 @@ const {
 	Client,
 	GatewayIntentBits,
 	Collection,
-	InteractionType,
-	EmbedBuilder,
 } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
-const dotenv = require('dotenv'); dotenv.config();
+const dotenv = require('dotenv');dotenv.config();
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // 斜線命令處理
@@ -34,21 +32,5 @@ for (const file of eventFiles) {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
-
-// 表單回報處理
-client.on('interactionCreate', async interaction => {
-	if (interaction.type !== InteractionType.ModalSubmit) return;
-	const channel = client.channels.cache.get('1004786991021441084');
-	const Embed = new EmbedBuilder()
-		.setColor('Yellow')
-		.setAuthor({ name: '機器人問題回報通知' })
-		.addFields({ name: '問題回報內容', value: `回報用戶:${interaction.user}\n頻道:${interaction.fields.getTextInputValue('channel0Input')}\n描述:${interaction.fields.getTextInputValue('problemInput')}` })
-		.setTimestamp()
-		.setFooter({ text: '來自𝐖𝐚𝐥𝐚的系統訊息' });
-	channel.send({ embeds: [Embed] });
-	if (interaction.customId === 'problemReport') {
-		await interaction.reply({ content: '已收到您提交的回覆', ephemeral: true });
-	}
-});
 
 client.login(process.env.TOKEN);
