@@ -19,7 +19,6 @@ for (const file of commandFiles) {
 }
 
 // 事件處理
-client.event = new Collection();
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 for (const file of eventFiles) {
