@@ -1,5 +1,3 @@
-// const { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
-
 module.exports = {
 	name: 'interactionCreate',
 	async execute(interaction) {
@@ -14,7 +12,7 @@ module.exports = {
 		}
 		catch (error) {
 			console.error(error);
-			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+			await interaction.reply({ content: '錯誤! 錯誤!', ephemeral: true });
 		}
 
 	},

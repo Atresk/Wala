@@ -5,8 +5,9 @@ const {
 } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
-const dotenv = require('dotenv');dotenv.config();
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const dotenv = require('dotenv');
+dotenv.config();
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages] });
 
 // 斜線命令處理
 client.commands = new Collection();
@@ -31,5 +32,6 @@ for (const file of eventFiles) {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
+
 
 client.login(process.env.TOKEN);

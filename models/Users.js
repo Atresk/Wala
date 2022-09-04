@@ -1,15 +1,15 @@
 module.exports = (sequelize, DataTypes) => {
-	return sequelize.define('用戶', {
+	return sequelize.define('users', {
 		user_id: {
 			type: DataTypes.STRING,
 			primaryKey: true,
 		},
-		活躍經驗值: {
+		balance: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
 			allowNull: false,
 		},
 	}, {
-		timestamps: true,
+		timestamps: false,
 	});
 };
