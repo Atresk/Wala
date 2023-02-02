@@ -1,8 +1,9 @@
+const { Events } = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
 
 module.exports = {
-	name: 'ready',
+	name: Events.ClientReady,
 	once: true,
 	async execute(client) {
 		const guildId = client.guilds.cache.get(process.env.GUILDID);

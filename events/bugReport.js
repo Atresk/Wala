@@ -1,7 +1,8 @@
-const { InteractionType, EmbedBuilder } = require('discord.js');
+const { InteractionType, EmbedBuilder, Events } = require('discord.js');
+
 
 module.exports = {
-	name: 'interactionCreate',
+	name: Events.InteractionCreate,
 	async execute(interaction) {
 		if (interaction.type !== InteractionType.ModalSubmit) return;
 		const channel = interaction.client.channels.cache.get('1004786991021441084');

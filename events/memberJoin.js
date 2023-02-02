@@ -1,9 +1,9 @@
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder, Events } = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
 
 module.exports = {
-	name: 'guildMemberAdd',
+	name: Events.GuildMemberAdd,
 	async execute(member) {
 		const Embed = new EmbedBuilder()
 			.setColor(0x0099FF)

@@ -3,11 +3,19 @@ const {
 	GatewayIntentBits,
 	Collection,
 } = require('discord.js');
+
 const fs = require('node:fs');
 const path = require('node:path');
 const dotenv = require('dotenv');
 dotenv.config();
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages] });
+const client = new Client({ intents: [
+	GatewayIntentBits.Guilds, 
+	GatewayIntentBits.GuildMembers, 
+	GatewayIntentBits.GuildIntegrations, 
+	GatewayIntentBits.GuildMessages, 
+	GatewayIntentBits.DirectMessages, 
+	GatewayIntentBits.GuildVoiceStates
+] });
 
 // 斜線命令處理
 client.commands = new Collection();
