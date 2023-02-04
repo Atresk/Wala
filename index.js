@@ -14,7 +14,8 @@ const client = new Client({ intents: [
 	GatewayIntentBits.GuildIntegrations, 
 	GatewayIntentBits.GuildMessages, 
 	GatewayIntentBits.DirectMessages, 
-	GatewayIntentBits.GuildVoiceStates
+	GatewayIntentBits.GuildVoiceStates,
+	GatewayIntentBits.MessageContent
 ] });
 
 // 斜線命令處理

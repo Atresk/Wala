@@ -35,14 +35,14 @@ if(delcommand == 'y') {
 	delcommand = prompt('是否為全局命令: ');
 	if(delcommand == 'y') {
 		ID = prompt('ID: ');
-		rest.delete(Routes.applicationCommand(process.env.CLIENTID, '${ID}'))
-		.then(() => console.log(`${delcommand}全局命令已刪除!`))
+		rest.delete(Routes.applicationCommand(process.env.CLIENTID, `${ID}`))
+		.then(() => console.log(`${ID}全局命令已刪除!`))
 		.catch(console.error);
 	}
 	else if(delcommand == 'n'){
 		ID = prompt('ID: ');
-		rest.delete(Routes.applicationGuildCommand(process.env.CLIENTID, process.env.GUILDID, '${ID}'))
-		.then(() => console.log(`${delcommand}公會命令已刪除!`))
+		rest.delete(Routes.applicationGuildCommand(process.env.CLIENTID, process.env.GUILDID, `${ID}`))
+		.then(() => console.log(`${ID}公會命令已刪除!`))
 		.catch(console.error);
 	}
 }
