@@ -1,8 +1,8 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const dotenv = require('dotenv'); dotenv.config();
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord.js');
+const dotenv = require('dotenv'); 
+dotenv.config();
+const { REST, Routes } = require('discord.js');
 const prompt = require('prompt-sync')();
 
 const commands = [];
@@ -46,4 +46,5 @@ if(delcommand == 'y') {
 		.catch(console.error);
 	}
 }
+
 

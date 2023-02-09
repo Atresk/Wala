@@ -13,26 +13,30 @@ module.exports = {
             type: AuditLogEvent.MessageDelete,
         });
         const deletionLog = fetchedLogs.entries.first();
-
-        const { executor, target } = deletionLog;
-
-        const Embed = new EmbedBuilder()
-			.setColor('Yellow')
-            .setDescription(`刪除者: ${executor}\n原發送者: ${message.author}\n頻道: ${message.channel}\n 內容: ${message.content}`)
-			.setTimestamp()
-			.setFooter({ text: '訊息刪除' });
-
+        
         const Embed2 = new EmbedBuilder()
 			.setColor('Yellow')
             .setDescription(`原發送者: ${message.author}\n頻道: ${message.channel}\n 內容: ${message.content}`)
 			.setTimestamp()
 			.setFooter({ text: '訊息刪除' });
-            
-        if (target.id === message.author.id) {
-            channel.send({ embeds: [Embed] });
-        } else {
+
+        if (!deletionLog) {
             channel.send({ embeds: [Embed2] });
         }
-        console.log(`${message.content}`);
+        else {
+            const { executor, target } = deletionLog;
+
+            const Embed = new EmbedBuilder()
+		    	.setColor('Yellow')
+                .setDescription(`刪除者: ${executor}\n原發送者: ${message.author}\n頻道: ${message.channel}\n 內容: ${message.content}`)
+		    	.setTimestamp()
+		    	.setFooter({ text: '訊息刪除' });
+
+            if (target.id === message.author.id) {
+                channel.send({ embeds: [Embed] });
+            } else {
+                channel.send({ embeds: [Embed2] });
+            }
+        }
 	},
 };
